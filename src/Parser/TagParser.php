@@ -19,15 +19,7 @@ class TagParser implements ParserInterface
     {
         preg_match_all(sprintf(self::PATTERN, $this->tag, $this->tag), $content, $matches);
 
-        if (count($matches ['value']) === 0) {
-            throw $this->tagIsNotExist($this->tag);
-        }
-
         return $matches ['value'];
     }
 
-    protected function tagIsNotExist(string $tag): RuntimeException
-    {
-        return new RuntimeException(sprintf('Tag [`%s`] is not exist in this HTML file', $tag));
-    }
 }
